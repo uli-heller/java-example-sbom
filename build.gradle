@@ -1,3 +1,9 @@
+buildscript {
+    configurations.classpath {
+        resolutionStrategy.activateDependencyLocking()
+    }
+}
+
 plugins {
   id 'java'
   id 'maven-publish'
@@ -10,6 +16,10 @@ version = '0.0.2'
 
 java {
   sourceCompatibility = '17'
+}
+
+dependencyLocking {
+    lockAllConfigurations()
 }
 
 repositories {

@@ -1,9 +1,10 @@
-java-example-trivy-sbom
+java-example-sbom
 =======================
 
 This is an example project.
 I use it to verify the creation
-of an SBOM with the help of TRIVY.
+of an SBOM with the help of TRIVY
+or the CDXGEN gradle plugin.
 
 Please note: I know that typically,
 you integrate sub projects via "settings.gradle".

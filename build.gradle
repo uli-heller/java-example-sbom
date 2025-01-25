@@ -7,7 +7,7 @@ buildscript {
 plugins {
   id 'java'
   id 'maven-publish'
-  id 'org.cyclonedx.bom' version '+'
+  id 'org.cyclonedx.bom' version '+' // or '2.0.0'
   id 'org.springframework.boot' version '3.4.1'
 }
 

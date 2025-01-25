@@ -34,6 +34,6 @@ trivy filesystem build/libs/java-example-trivy-sbom-0.0.2.jar --format spdx-json
 
 # Activate dependency locking
 ./gradlew --write-locks dependencies
-trivy filesystem . --format spdx-json --output sbom.json
+trivy filesystem gradle.lockfile --format spdx-json --output sbom.json
 # -> sbom.json
 ```

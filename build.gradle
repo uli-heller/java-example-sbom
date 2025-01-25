@@ -1,0 +1,49 @@
+plugins {
+  id 'java'
+  id 'maven-publish'
+  id 'org.springframework.boot' version '3.4.1'
+}
+
+apply from:   'cool-heller-uli.gradle'
+
+group = 'com.example'
+version = '0.0.2'
+
+java {
+  sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+        maven {
+          url("file://${projectDir}/maven-repository")
+        }
+}
+
+dependencies {
+  implementation platform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
+  implementation 'org.springframework.boot:spring-boot-starter-web'
+  implementation 'cool.heller.uli:hello-world:0.9.0'
+  implementation 'cool.heller.uli:bye-moon:1.0-SNAPSHOT'
+  implementation 'cool.heller:maybe-mars:1.1.0-BETA'
+}
+
+tasks.withType(PublishToMavenRepository) {
+    doFirst {
+        println("Publishing ${publication.groupId}:${publication.artifactId}:${publication.version} to ${repository.url}")
+    }
+}
+
+publishing {
+    publications {
+        java(MavenPublication) {
+          from components.java
+        }
+    }
+    repositories {
+      maven {
+        name 'local-registry'
+        url = uri("file://${buildDir}/local-repository")
+      } // maven
+    } // repositories
+}

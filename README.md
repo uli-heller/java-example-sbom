@@ -25,7 +25,7 @@ trivy filesystem build/libs/java-example-trivy-sbom-0.0.2.jar --format spdx-json
 #
 # https://www.thomasvitale.com/supply-chain-security-java-sbom/
 # plugins {
-#    id 'org.cyclonedx.bom' version '+'
+#    id 'org.cyclonedx.bom' version '+' //-> 2.0.0
 # }
 #
 ./gradlew cyclonedxBom

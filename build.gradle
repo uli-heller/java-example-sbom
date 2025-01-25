@@ -4,8 +4,6 @@ plugins {
   id 'org.springframework.boot' version '3.4.1'
 }
 
-apply from:   'cool-heller-uli.gradle'
-
 group = 'com.example'
 version = '0.0.2'
 

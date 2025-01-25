@@ -1,0 +1,40 @@
+plugins {
+	id 'java'
+        id 'maven-publish'
+	id 'org.springframework.boot' version '3.4.1'
+}
+
+group = 'cool.heller'
+//version = '0.1.0'
+
+java {
+    sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation platform("org.springframework.boot:spring-boot-dependencies:3.4.1")
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+}
+tasks.withType(PublishToMavenRepository) {
+    doFirst {
+        println("Publishing ${publication.groupId}:${publication.artifactId}:${publication.version} to ${repository.url}")
+    }
+}
+
+publishing {
+    publications {
+        java(MavenPublication) {
+          from components.java
+        }
+    }
+    repositories {
+      maven {
+        name 'local-registry'
+        url = uri(mavenRepositoryUrl)
+      } // maven
+    }
+}
